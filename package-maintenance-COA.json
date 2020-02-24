@@ -1,0 +1,8 @@
+{
+	"name":"maintenance-COA-1",
+	"backup-entities": ["system/enviroment"],
+	"backup-frequency": {"system" :"12 hrs"},
+	"update-entities": ["package-catalog", "packages"],
+	"update-frequency": {"package-catalog": "12 hrs", "packages": "12hrs"},
+	"post-update-package-download": {"web":true,"db":true}
+}

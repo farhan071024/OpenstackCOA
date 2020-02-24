@@ -11,7 +11,8 @@ def jsoninput():
 		data = json.load(json_data)
 		#print(data)
 	if data["name"]=="port-maintenance-COA":
-		print (returnports (data["app-port-scan"],data["app-port-scan-frequency"],ports))
+		#print (returnports (data["app-port-scan"],data["app-port-scan-frequency"],ports))
+		return returnports (data["app-port-scan"],data["app-port-scan-frequency"],ports)
 
 
 def returnports(data,data2,ports):

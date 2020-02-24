@@ -1,0 +1,7 @@
+{
+	"name": "ransomware-standard-COA",
+	"backup-entities":["database","system"],
+	"number of backups":{"database":2, "system":2},
+	"backup-location":{"database":"remote", "system": "local"},
+	"backup-frequency":{"database":"6 hrs", "system":"12 hrs"}
+}

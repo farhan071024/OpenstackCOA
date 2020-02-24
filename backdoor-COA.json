@@ -1,0 +1,4 @@
+{
+	"name": "backdoor-COA",
+	"COA-template" : ["package-maintenance-COA","firewall-maintenance-COA"]
+}

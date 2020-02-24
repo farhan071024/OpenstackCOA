@@ -1,0 +1,9 @@
+{
+	"name": "worm-COA",
+	"quarantine-entities":["database"], "rational": "use containers to do that and add security groups to containers to allow experts to investigate",
+	"quarantine-location":{"database":"remote"},
+	"reboot-from-backup": "required",
+	"backup-entities": ["database"],
+	"backup-frequency": {"database": "3 hrs"},
+	"backup-location": {"database":"remote"}
+}

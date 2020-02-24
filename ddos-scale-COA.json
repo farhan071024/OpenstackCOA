@@ -1,0 +1,6 @@
+{
+	"name":"ddos-scale-COA",
+	"scale-entitites" : ["web-server"],
+	"scale-size": {"web-server": "4"},
+	"scale-duration":{"web-server": "5"}
+}

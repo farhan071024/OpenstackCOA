@@ -1,0 +1,7 @@
+{
+	"name": "ransomware-severe-COA",
+	"backup-entities":["database","system"],
+	"number of backups":{"database":4, "system": 4},
+	"backup-location":{"database":["remote","local"], "system": ["remote"]},
+	"backup-frequency":{"database": "1 hr", "system": "2 hrs"}
+}
