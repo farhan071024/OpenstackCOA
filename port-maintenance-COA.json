@@ -1,0 +1,6 @@
+{
+	"name": "port-maintenance-COA",
+	"app-port-scan": ["database-server","web-server"], "port-scan-rationale" : "to check associated ip address with port",
+	"app-port-scan-frequency":{"database-server": "6 hrs", "web-server": "6 hrs"},
+	"last-app-port-modification-count": {"database-server":4, "web-server": 2}
+}

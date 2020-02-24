@@ -1,0 +1,8 @@
+{
+	"name": "firewall-maintenance-COA",
+	"firewall-rule-scan": true,
+	"firewall-rule-scan-frquency": "2hrs",
+	"firwall-rule-modification-count": 1999,
+	"rational": "modify rules to block malicious ips and update security groups for a project or application(s)",
+	"blocked-ips":["10.0.0.1"]
+}

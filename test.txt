@@ -1,0 +1,48 @@
+
+# tenant user name
+OS_TENANT_NAME='FHaque'
+
+# project name
+OS_PROJECT_NAME='FHaque'
+
+# tenan user name
+OS_USERNAME='FHaque'
+
+#tenant user password
+OS_PASSWORD='farhan0724'
+
+# API version v2.0 is very important
+# freezer does not work with API version 3
+OS_AUTH_URL='https://rkrishnan.ics.utsa.edu:5000/v2.0'
+
+# API endpoint type. this is usually 'publicURL'
+OS_ENDPOINT_TYPE='publicURL'
+
+
+curl -v -s -X POST https://rkrishnan.ics.utsa.edu:5000/auth/tokens?nocatalog   -H "Content-Type: application/json"   -d '{ "auth": { "identity": { "methods": ["password"],"password": {"user": {"domain": {"name": "FHaque"},"name": "FHaque", "password": "farhan0724"} } }, "scope": { "project": { "domain": { "name": "FHaque" }, "name":  "FHaque" } } }}' \
+| python -m json.tool
+
+
+
+from keystoneauth1.identity import v2
+from keystoneauth1 import session
+from keystoneclient.v2_0 import client
+username='FHaque'
+password='farhan0724'
+tenant_name='FHaque'
+auth_url='https://rkrishnan.ics.utsa.edu:5000/v2.0'
+auth = v2.Password(username=username, password=password,tenant_name=tenant_name, auth_url=auth_url)
+sess = session.Session(auth=auth)
+keystone = client.Client(session=sess)
+
+
+
+from freezerclient.v1.client import Client as FreezerClient
+client = Client(v2, FHaque, farhan0724, FHaque, https://rkrishnan.ics.utsa.edu:5000/v2.0, ENDPOINT)
+jobs = client.jobs.list()
+
+
+from cinderclient.v1 import client
+nt = client.Client("FHaque", "farhan0724", "FHaque", "https://rkrishnan.ics.utsa.edu:5000/v2.0", service_type="compute")
+nt.flavors.list()
+
