@@ -1,6 +1,0 @@
-{
-	"name": "ransomware-mild-COA",
-	"backup-entities":["database"],
-	"number of backups":{"database":2},
-	"backup-location":{"database":"local"}
-}

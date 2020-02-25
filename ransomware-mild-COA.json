@@ -1,7 +1,7 @@
 {
 	"name": "ransomware-mild-COA",
-	"backup-entities":["database"],
-	"number of backups":{"database":2},
-	"backup-location":{"database":"local"},
-	"backup-frequency":{"database":"24 hrs"}
+	"backup-entities":["web-server"],
+	"number of backups":{"web-server":"3"},
+	"backup-location":{"web-server":"local"},
+	"backup-frequency":{"web-server":"weekly"}
 }
