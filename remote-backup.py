@@ -3,7 +3,10 @@ import json
 import sys
 import schedule 
 import time 
+from paramiko import SSHClient
+from scp import SCPClient
 
+checksums={"web-server Backup2": "baa372b8cd200efd1b20fcaf5177932f"}
 
 def auth():
 	url = 'http://10.245.135.69/identity/v3/auth/tokens'
@@ -47,13 +50,38 @@ def getimage(name):
 	data=json.loads(data)
 	for sc in data["images"]:
 		if sc["name"]== name:			
-			return downloadimage(sc["id"])
+			return downloadimage(sc["id"],sc["name"])
 
-def downloadimage(image):
+def downloadimage(image,name):
 	token_id= auth()
 	url='http://10.245.135.69/image/v2/images/'+image+'/file'	
 	my_headers = {"X-Auth-Token": token_id}
 	r = requests.get(url,headers=my_headers)
-	return r
+	if r.headers["Content-MD5"]== checksums[name]:
+		file = open("image.raw", "wb")
+		file.write(r.content)
+		file.close()
+		return "Image downloaded!"
+	else:
+		return  "Intergrity check failed!"
 
-print getimage("web-server Backup2")
+
+def scp():
+	ssh = SSHClient()
+	ssh.load_system_host_keys()
+	ssh.connect('10.245.135.69')
+
+# SCPCLient takes a paramiko transport as an argument
+	scp = SCPClient(ssh.get_transport())
+
+	scp.put('image.raw')
+	scp.get('image.raw')
+
+# Uploading the 'test' directory with its content in the
+# '/home/user/dump' remote directory
+	scp.put('raw', recursive=True, remote_path='/home')
+
+	scp.close()
+
+#print getimage("web-server Backup2")
+scp()
