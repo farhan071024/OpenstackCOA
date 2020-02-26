@@ -1,6 +1,6 @@
 {
 	"name": "ddos-COA",
-	"COA-templates": ["firewall-maintenace-COA"],
+	"COA-templates": ["securitygroup-rule-maintenance-COA"],
 	"blocked-ips":[],
 	"blocked-protocol-traffic": ["icmp"],
 	"blocked-protocol-traffic-duration": {"icmp": "24 hrs"}

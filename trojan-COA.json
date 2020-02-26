@@ -1,4 +1,4 @@
 {
 	"name": "trojan-COA",
-	"COA-template" : ["package-maintenance-COA", "firewall-maintenance-COA"]
+	"COA-template" : ["package-maintenance-COA", "securitygroup-rule-maintenance-COA"]
 }

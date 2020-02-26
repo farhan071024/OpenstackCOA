@@ -5,7 +5,6 @@ import schedule
 import time 
 
 
-
 def auth():
 	url = 'http://10.245.135.69/identity/v3/auth/tokens'
     
@@ -39,29 +38,22 @@ def auth():
 	token_id = r.headers.get('X-Subject-Token')
 	return token_id
 
-
-def listports(token):
-	url='http://10.245.135.69:9696/v2.0/security-group-rules'	
-	my_headers = {"X-Auth-Token": token}
+def getimage(name):
+	token_id= auth()
+	url='http://10.245.135.69/image/v2/images'	
+	my_headers = {"X-Auth-Token": token_id}
 	r = requests.get(url,headers=my_headers)
-	return json.dumps(r.json())
-	#return r
+	data=json.dumps(r.json())
+	data=json.loads(data)
+	for sc in data["images"]:
+		if sc["name"]== name:			
+			return downloadimage(sc["id"])
 
-def createsecuritygrouprule(token):
-	url='http://10.245.135.69/compute/v2.1/os-security-group-rules'	
-	my_headers = {"X-Auth-Token": token}
-	body=    { "security_group_rule": {
-        "parent_group_id": "022f0c2b-d1fa-4929-b49d-77facf1e217a",
-        "ip_protocol": "tcp",
-        "from_port": 22,
-        "to_port": 22,
-        "cidr": "10.0.0.0/24"
-    }
-}
-	json_body = json.dumps(body)
-	r = requests.post(url,json_body,headers=my_headers)
-	print json.dumps(r.json())
-	#print r.headers
+def downloadimage(image):
+	token_id= auth()
+	url='http://10.245.135.69/image/v2/images/'+image+'/file'	
+	my_headers = {"X-Auth-Token": token_id}
+	r = requests.get(url,headers=my_headers)
+	return r
 
-token_id= auth()
-print createsecuritygrouprule(token_id)
+print getimage("web-server Backup2")

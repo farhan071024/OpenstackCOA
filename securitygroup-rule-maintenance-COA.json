@@ -1,0 +1,7 @@
+{
+	"name": "securitygroup-rule-maintenance-COA",
+	"servers": ["web-server"],
+	"securitygroup-rule-scan-frquency": {"web-server":"2"},
+	"securitygroup-rule-modification-count": {"web-server":"1999"},
+	"allowed-ips-cidr":{"web-server":["10.0.0.0/24"]}
+}
