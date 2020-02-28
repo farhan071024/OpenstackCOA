@@ -5,6 +5,7 @@ import schedule
 import time 
 from paramiko import SSHClient
 from scp import SCPClient
+import subprocess
 
 checksums={"web-server Backup2": "baa372b8cd200efd1b20fcaf5177932f"}
 
@@ -66,22 +67,12 @@ def downloadimage(image,name):
 		return  "Intergrity check failed!"
 
 
-def scp():
-	ssh = SSHClient()
-	ssh.load_system_host_keys()
-	ssh.connect('10.245.135.69')
 
-# SCPCLient takes a paramiko transport as an argument
-	scp = SCPClient(ssh.get_transport())
 
-	scp.put('image.raw')
-	scp.get('image.raw')
-
-# Uploading the 'test' directory with its content in the
-# '/home/user/dump' remote directory
-	scp.put('raw', recursive=True, remote_path='/home')
-
-	scp.close()
-
+def scp2():
+	subprocess.Popen(["scp", "image.raw", "ubuntu@10.245.135.69:/home/ubuntu/openstackcoa"])
+	print "done"
+	return 
 #print getimage("web-server Backup2")
-scp()
+scp2()
+
